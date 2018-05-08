@@ -7,17 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>W3CProject storage</title>
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>User - W3CProject storage</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="./css/highlight.css">
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
   
-  <script src="./js/jquery-2.1.1.min.js"></script>
-  <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  <script>
+    // Current page data
+    var mkdocs_page_name = "User";
+    var mkdocs_page_input_path = "Ubuntu/user.md";
+    var mkdocs_page_url = "/Ubuntu/user/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -28,9 +35,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> W3CProject storage</a>
+        <a href="../.." class="icon icon-home"> W3CProject storage</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
@@ -42,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href=".">Home</a>
+    <a class="" href="../..">Welcome to Index</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -51,7 +58,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="1C-Bitrix CMS/errors/">Errors</a>
+    <a class="" href="../../1C-Bitrix CMS/errors/">Errors</a>
                 </li>
     </ul>
 	    </li>
@@ -62,7 +69,7 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="PHP/errors/">Errors</a>
+    <a class="" href="../../PHP/errors/">Errors</a>
                 </li>
     </ul>
 	    </li>
@@ -73,15 +80,15 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="PostgreSQL/backup/">Backup</a>
+    <a class="" href="../../PostgreSQL/backup/">Backup</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="PostgreSQL/errors/">Errors</a>
+    <a class="" href="../../PostgreSQL/errors/">Errors</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="PostgreSQL/install/">Install</a>
+    <a class="" href="../../PostgreSQL/install/">Install</a>
                 </li>
     </ul>
 	    </li>
@@ -92,15 +99,30 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="Ubuntu/errors/">Errors</a>
+    <a class="" href="../errors/">Errors</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="Ubuntu/grep/">Grep</a>
+    <a class="" href="../grep/">Grep</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="Ubuntu/user/">User</a>
+    <a class="current" href="./">User</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#create-user">Create User</a></li>
+    
+
+    <li class="toctree-l3"><a href="#change-user-group-to-sudo">Change user group to sudo</a></li>
+    
+
+    <li class="toctree-l3"><a href="#delete-user">Delete user</a></li>
+    
+
+    <li class="toctree-l3"><a href="#delete-user-with-home-directory">Delete user with home directory</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -115,7 +137,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">W3CProject storage</a>
+        <a href="../..">W3CProject storage</a>
       </nav>
 
       
@@ -123,9 +145,15 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
     
+      
+        
+          <li>Ubuntu &raquo;</li>
+        
+      
     
+    <li>User</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -135,22 +163,25 @@
           <div role="main">
             <div class="section">
               
-
-  <h1 id="search">Search Results</h1>
-
-  <form id="content_search" action="search.html">
-    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-    <input name="q" id="mkdocs-search-query" type="text" class="search_input search-query ui-autocomplete-input" placeholder="Search the Docs" autocomplete="off" autofocus>
-  </form>
-
-  <div id="mkdocs-search-results" class="search-results">
-    Searching...
-  </div>
-
-
+                <h2 id="create-user">Create User</h2>
+<p><code>adduser newUser</code></p>
+<h2 id="change-user-group-to-sudo">Change user group to sudo</h2>
+<p><code>usermod -aG sudo newUser</code></p>
+<h2 id="delete-user">Delete user</h2>
+<p><code>deluser newUser</code></p>
+<h2 id="delete-user-with-home-directory">Delete user with home directory</h2>
+<p><code>deluser --remove-home newUser</code></p>
+              
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../grep/" class="btn btn-neutral" title="Grep"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -174,13 +205,15 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../grep/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
       
     </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="./js/theme.js"></script>
-      <script src="./search/require.js"></script>
-      <script src="./search/search.js"></script>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
 
 </body>
 </html>

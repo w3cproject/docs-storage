@@ -3,7 +3,7 @@
         {
             "location": "/", 
             "text": "Welcome to Index\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
-            "title": "Home"
+            "title": "Welcome to Index"
         }, 
         {
             "location": "/#welcome-to-index", 
@@ -21,24 +21,149 @@
             "title": "Project layout"
         }, 
         {
-            "location": "/about/", 
-            "text": "Welcome to About\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
-            "title": "About"
+            "location": "/1C-Bitrix CMS/errors/", 
+            "text": "ACTIVE_FROM which is not in SELECT list\n\n\nACTIVE_FROM which is not in SELECT list; this is incompatible with DISTINCT\n\n\n\nadd into \nmy.cnf\n file\n\n\nslq-mode = \"\"\n\n\nor add into \nbitrix/php_interface/after_connect.php\n file", 
+            "title": "Errors"
         }, 
         {
-            "location": "/about/#welcome-to-about", 
-            "text": "For full documentation visit  mkdocs.org .", 
-            "title": "Welcome to About"
+            "location": "/1C-Bitrix CMS/errors/#active_from-which-is-not-in-select-list", 
+            "text": "ACTIVE_FROM which is not in SELECT list; this is incompatible with DISTINCT  add into  my.cnf  file  slq-mode = \"\"  or add into  bitrix/php_interface/after_connect.php  file", 
+            "title": "ACTIVE_FROM which is not in SELECT list"
         }, 
         {
-            "location": "/about/#commands", 
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
+            "location": "/PHP/errors/", 
+            "text": "Call to undefined function imagecreatefrompng()\n\n\nsudo apt-get install php7.0-gd\n\n\nPDO mysql extension is not installed\n\n\nsudo apt-get install php7.0-gd php7.0-mysql\n\n\nThe mbstring extension is missing\n\n\nsudo apt-get install php-mbstring php7.0-mbstring php-gettext libapache2-mod-php7.0\n\n\nthen\n\n\nsudo phpenmod mcrypt\nsudo phpenmod mbstring\nsudo service apache2 restart", 
+            "title": "Errors"
+        }, 
+        {
+            "location": "/PHP/errors/#call-to-undefined-function-imagecreatefrompng", 
+            "text": "sudo apt-get install php7.0-gd", 
+            "title": "Call to undefined function imagecreatefrompng()"
+        }, 
+        {
+            "location": "/PHP/errors/#pdo-mysql-extension-is-not-installed", 
+            "text": "sudo apt-get install php7.0-gd php7.0-mysql", 
+            "title": "PDO mysql extension is not installed"
+        }, 
+        {
+            "location": "/PHP/errors/#the-mbstring-extension-is-missing", 
+            "text": "sudo apt-get install php-mbstring php7.0-mbstring php-gettext libapache2-mod-php7.0  then  sudo phpenmod mcrypt\nsudo phpenmod mbstring\nsudo service apache2 restart", 
+            "title": "The mbstring extension is missing"
+        }, 
+        {
+            "location": "/PostgreSQL/backup/", 
+            "text": "Restore dump with .backup extension (or other)\n\n\npsql -h localhost -p 5433 -d dbName -U UserName -f pathToBackUp.backup\n\n\nor\n\n\npsql -h localhost -p 5433 -U user -d db_name \n /directory/archive.sql\n\n\nSource stackoverflow\n\n\nCreate backup\n\n\npg_dump -h localhost -p 5432 -U user -d db_name \n backup_name.sql\n\n\nSource stackoverflow", 
+            "title": "Backup"
+        }, 
+        {
+            "location": "/PostgreSQL/backup/#restore-dump-with-backup-extension-or-other", 
+            "text": "psql -h localhost -p 5433 -d dbName -U UserName -f pathToBackUp.backup  or  psql -h localhost -p 5433 -U user -d db_name   /directory/archive.sql  Source stackoverflow", 
+            "title": "Restore dump with .backup extension (or other)"
+        }, 
+        {
+            "location": "/PostgreSQL/backup/#create-backup", 
+            "text": "pg_dump -h localhost -p 5432 -U user -d db_name   backup_name.sql  Source stackoverflow", 
+            "title": "Create backup"
+        }, 
+        {
+            "location": "/PostgreSQL/errors/", 
+            "text": "FATAL: password authentication failed for user \"postgres\"\n\n\nIf you have this error:\n\n\nIf I remember correctly the user \npostgres\n has no \nDB\n password set on Ubuntu by default. That means, that you can login to that account only by using the \npostgres\n OS user account.\n\n\nAssuming, that you have \nroot\n access on the box you can do:\n\n\nsudo -u postgres psql\n\n\nIf any of those commands fail with an error \npsql: FATAL:  password authentication failed for user \"postgres\"\n then check the file `/etc/postgresql/8.4/main/pg_hba.conf: There must be a line like this as the first non-comment line:\n\n\nlocal   all         postgres                          ident\n\n\n\nFor newer versions of PostgreSQL \nident\n actually might be \npeer\n. That's OK also.\n\n\nInside the \npsql\n shell you can give the \nDB user\n \npostgres\n a password:\n\n\nALTER USER postgres PASSWORD 'newPassword';", 
+            "title": "Errors"
+        }, 
+        {
+            "location": "/PostgreSQL/errors/#fatal-password-authentication-failed-for-user-postgres", 
+            "text": "If you have this error:  If I remember correctly the user  postgres  has no  DB  password set on Ubuntu by default. That means, that you can login to that account only by using the  postgres  OS user account.  Assuming, that you have  root  access on the box you can do:  sudo -u postgres psql  If any of those commands fail with an error  psql: FATAL:  password authentication failed for user \"postgres\"  then check the file `/etc/postgresql/8.4/main/pg_hba.conf: There must be a line like this as the first non-comment line:  local   all         postgres                          ident  For newer versions of PostgreSQL  ident  actually might be  peer . That's OK also.  Inside the  psql  shell you can give the  DB user   postgres  a password:  ALTER USER postgres PASSWORD 'newPassword';", 
+            "title": "FATAL: password authentication failed for user \"postgres\""
+        }, 
+        {
+            "location": "/PostgreSQL/install/", 
+            "text": "Before install\n\n\nsudo apt-get update\n\n\nInstall\n\n\nsudo apt-get install postgresql postgresql-contrib\n\n\nChange account to postgres\n\n\nsudo -i -u postgres\n\n\nCreate new role\n\n\ncreateuser --interactive\n\n## or with sudo\n\nsudo -u postgres createuser --interactive\n\n\n\n\nCreate new database\n\n\ncreatedb dbname\n\n## or with sudo\n\nsudo -u postgres createdb dbname\n\n\n\n\nCreate user\n\n\nsudo adduser username\n\n\nCommands\n\n\nChange postgres password\n\n\nALTER USER postgres PASSWORD 'password';", 
+            "title": "Install"
+        }, 
+        {
+            "location": "/PostgreSQL/install/#before-install", 
+            "text": "sudo apt-get update", 
+            "title": "Before install"
+        }, 
+        {
+            "location": "/PostgreSQL/install/#install", 
+            "text": "sudo apt-get install postgresql postgresql-contrib", 
+            "title": "Install"
+        }, 
+        {
+            "location": "/PostgreSQL/install/#change-account-to-postgres", 
+            "text": "sudo -i -u postgres", 
+            "title": "Change account to postgres"
+        }, 
+        {
+            "location": "/PostgreSQL/install/#create-new-role", 
+            "text": "createuser --interactive\n\n## or with sudo\n\nsudo -u postgres createuser --interactive", 
+            "title": "Create new role"
+        }, 
+        {
+            "location": "/PostgreSQL/install/#create-new-database", 
+            "text": "createdb dbname\n\n## or with sudo\n\nsudo -u postgres createdb dbname", 
+            "title": "Create new database"
+        }, 
+        {
+            "location": "/PostgreSQL/install/#create-user", 
+            "text": "sudo adduser username", 
+            "title": "Create user"
+        }, 
+        {
+            "location": "/PostgreSQL/install/#commands", 
+            "text": "", 
             "title": "Commands"
         }, 
         {
-            "location": "/about/#project-layout", 
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
-            "title": "Project layout"
+            "location": "/PostgreSQL/install/#change-postgres-password", 
+            "text": "ALTER USER postgres PASSWORD 'password';", 
+            "title": "Change postgres password"
+        }, 
+        {
+            "location": "/Ubuntu/errors/", 
+            "text": "The program add-apt-repository is currently not installed\n\n\nsudo apt-get install software-properties-common\n\n\nand/or\n\n\nsudo apt-get install python3-software-properties\n\n\nand/or\n\n\nsudo apt-get install python-software-properties\n\n\nSource Askubuntu", 
+            "title": "Errors"
+        }, 
+        {
+            "location": "/Ubuntu/errors/#the-program-add-apt-repository-is-currently-not-installed", 
+            "text": "sudo apt-get install software-properties-common  and/or  sudo apt-get install python3-software-properties  and/or  sudo apt-get install python-software-properties  Source Askubuntu", 
+            "title": "The program add-apt-repository is currently not installed"
+        }, 
+        {
+            "location": "/Ubuntu/grep/", 
+            "text": "Find text in files\n\n\ngrep -Ril \"text-to-find-here\" /\n\n\n\n\ni\n ignore case (optional in your case).\n\n\nR\n recursive.\n\n\nl\n \"show the file name, not the result itself\".\n\n\n/\n starting at the root of your machine.", 
+            "title": "Grep"
+        }, 
+        {
+            "location": "/Ubuntu/grep/#find-text-in-files", 
+            "text": "grep -Ril \"text-to-find-here\" /   i  ignore case (optional in your case).  R  recursive.  l  \"show the file name, not the result itself\".  /  starting at the root of your machine.", 
+            "title": "Find text in files"
+        }, 
+        {
+            "location": "/Ubuntu/user/", 
+            "text": "Create User\n\n\nadduser newUser\n\n\nChange user group to sudo\n\n\nusermod -aG sudo newUser\n\n\nDelete user\n\n\ndeluser newUser\n\n\nDelete user with home directory\n\n\ndeluser --remove-home newUser", 
+            "title": "User"
+        }, 
+        {
+            "location": "/Ubuntu/user/#create-user", 
+            "text": "adduser newUser", 
+            "title": "Create User"
+        }, 
+        {
+            "location": "/Ubuntu/user/#change-user-group-to-sudo", 
+            "text": "usermod -aG sudo newUser", 
+            "title": "Change user group to sudo"
+        }, 
+        {
+            "location": "/Ubuntu/user/#delete-user", 
+            "text": "deluser newUser", 
+            "title": "Delete user"
+        }, 
+        {
+            "location": "/Ubuntu/user/#delete-user-with-home-directory", 
+            "text": "deluser --remove-home newUser", 
+            "title": "Delete user with home directory"
         }
     ]
 }
