@@ -1,5 +1,2 @@
 site_name: W3CProject storage
-pages:
-    - Home: index.md
-    - About: about.md
 theme: readthedocs
