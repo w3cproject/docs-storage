@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>User - W3CProject storage</title>
+  <title>Install - W3CProject storage</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "User";
-    var mkdocs_page_input_path = "Ubuntu/user.md";
-    var mkdocs_page_url = "/Ubuntu/user/";
+    var mkdocs_page_name = "Install";
+    var mkdocs_page_input_path = "MariaDB/install.md";
+    var mkdocs_page_url = "/MariaDB/install/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -86,9 +86,24 @@
 		
     <span class="caption-text">MariaDB</span>
     <ul class="subnav">
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../../MariaDB/install/">Install</a>
+    <a class="current" href="./">Install</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#step-1-add-the-mariadb-repository">Step #1: Add the MariaDB Repository</a></li>
+    
+
+    <li class="toctree-l3"><a href="#step-2-install-mariadb">Step #2: Install MariaDB</a></li>
+    
+
+    <li class="toctree-l3"><a href="#step-3-configure-and-secure-mariadb-for-use">Step #3: Configure and Secure MariaDB for Use</a></li>
+    
+
+    <li class="toctree-l3"><a href="#step-4-verify-mariadb-installation">Step #4: Verify MariaDB Installation</a></li>
+    
+
+    </ul>
                 </li>
     </ul>
 	    </li>
@@ -140,34 +155,19 @@
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../errors/">Errors</a>
+    <a class="" href="../../Ubuntu/errors/">Errors</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../grep/">Grep</a>
+    <a class="" href="../../Ubuntu/grep/">Grep</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../other/">Other</a>
+    <a class="" href="../../Ubuntu/other/">Other</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">User</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#create-user">Create User</a></li>
-    
-
-    <li class="toctree-l3"><a href="#change-user-group-to-sudo">Change user group to sudo</a></li>
-    
-
-    <li class="toctree-l3"><a href="#delete-user">Delete user</a></li>
-    
-
-    <li class="toctree-l3"><a href="#delete-user-with-home-directory">Delete user with home directory</a></li>
-    
-
-    </ul>
+    <a class="" href="../../Ubuntu/user/">User</a>
                 </li>
     </ul>
 	    </li>
@@ -205,11 +205,11 @@
     
       
         
-          <li>Ubuntu &raquo;</li>
+          <li>MariaDB &raquo;</li>
         
       
     
-    <li>User</li>
+    <li>Install</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -219,14 +219,50 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="create-user">Create User</h2>
-<p><code>adduser newUser</code></p>
-<h2 id="change-user-group-to-sudo">Change user group to sudo</h2>
-<p><code>usermod -aG sudo newUser</code></p>
-<h2 id="delete-user">Delete user</h2>
-<p><code>deluser newUser</code></p>
-<h2 id="delete-user-with-home-directory">Delete user with home directory</h2>
-<p><code>deluser --remove-home newUser</code></p>
+                <h2 id="step-1-add-the-mariadb-repository">Step #1: Add the MariaDB Repository</h2>
+<p>The software-properties-common package should already be installed, but just in case:</p>
+<p><code>sudo apt-get install software-properties-common</code></p>
+<p>To find which repo you should use with the <a href="https://downloads.mariadb.org/mariadb/repositories/">MariaDB repository generator</a>. We’re going to add the Ubuntu 14.04 “trusty” <code>MariaDB 5.5</code> repository.</p>
+<p>We’ll import the MariaDB public key used by the package management system:</p>
+<p><code>sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db</code></p>
+<p>Then we’ll add the MariaDB repository:</p>
+<p><code>sudo add-apt-repository 'deb http://mirror.jmu.edu/pub/mariadb/repo/5.5/ubuntu trusty main'</code></p>
+<p>Now reload the package database:</p>
+<p><code>sudo apt-get update</code></p>
+<h2 id="step-2-install-mariadb">Step #2: Install MariaDB</h2>
+<p>At this point, installing MariaDB is as simple as running just one command:</p>
+<p><code>sudo apt-get install mariadb-server</code></p>
+<p>You may receive the following prompt or something similar:</p>
+<p>After this operation, 116 MB of additional disk space will be used. Do you want to continue? [Y/n]</p>
+<p>Enter Y to continue.</p>
+<p>Next you’ll be asked:</p>
+<p>New password for the MariaDB “root” user:</p>
+<p>This is an administrative account in MariaDB with elevated privileges; enter a strong password.</p>
+<p>Then you’ll be asked to verify the root MariaDB password:</p>
+<p>Repeat password for the MariaDB “root” user:</p>
+<p>That’s it! Your basic MariaDB installation is now complete!</p>
+<p>Be sure to stop MariaDB before proceeding to the next step:</p>
+<p><code>sudo service mysql stop</code></p>
+<h2 id="step-3-configure-and-secure-mariadb-for-use">Step #3: Configure and Secure MariaDB for Use</h2>
+<p>Now we’ll instruct MariaDB to create its database directory structure:</p>
+<p><code>sudo mysql_install_db</code></p>
+<p>Start MariaDB:</p>
+<p><code>sudo service mysql start</code></p>
+<p>And now let’s secure MariaDB by removing the test databases and anonymous user created by default:</p>
+<p><code>sudo mysql_secure_installation</code></p>
+<h2 id="step-4-verify-mariadb-installation">Step #4: Verify MariaDB Installation</h2>
+<p>You can check the version of the MariaDB installation with the following command:</p>
+<p><code>mysql -V</code></p>
+<p>Enter the MariaDB command client:</p>
+<p><code>mysql -p</code></p>
+<p>To stop MariaDB:</p>
+<p><code>sudo service mysql stop</code></p>
+<p>To start MariaDB:</p>
+<p><code>sudo service mysql start</code></p>
+<p>To check the status of MariaDB:</p>
+<p><code>sudo service mysql status</code></p>
+<p>To restart MariaDB:</p>
+<p><code>sudo service mysql restart</code></p>
               
             </div>
           </div>
@@ -234,10 +270,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../Yii2/errors/" class="btn btn-neutral float-right" title="Errors">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../MySQL/user/" class="btn btn-neutral float-right" title="User">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../other/" class="btn btn-neutral" title="Other"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../Apache/virtual_host/" class="btn btn-neutral" title="Virtual host"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -263,10 +299,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../other/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../Apache/virtual_host/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../Yii2/errors/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../MySQL/user/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

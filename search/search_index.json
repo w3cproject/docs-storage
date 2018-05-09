@@ -21,6 +21,106 @@
             "title": "ACTIVE_FROM which is not in SELECT list"
         }, 
         {
+            "location": "/Apache/htaccess/", 
+            "text": "Change document root folder\n\n\n    RewriteEngine on\n    RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]\n    RewriteCond %{HTTP_HOST} ^www.domain-name.com$\n    RewriteCond %{REQUEST_URI} !folder/\n    RewriteRule (.*) /folder/$1 [L]\n\n\n\n\n\n\n\n\ndomain-name.com\n - Type your own domain name\n\n\n\n\n\n\nfolder\n - Type the name of the sub-folder which has the test/development website\n\n\n\n\n\n\nRedirect from root folder to subfolder\n\n\nRewriteRule ^$ /site [L]\n\n\ndon't forget about use it:\n\n\n    Options +FollowSymLinks\n    RewriteEngine On", 
+            "title": "Htaccess"
+        }, 
+        {
+            "location": "/Apache/htaccess/#change-document-root-folder", 
+            "text": "RewriteEngine on\n    RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]\n    RewriteCond %{HTTP_HOST} ^www.domain-name.com$\n    RewriteCond %{REQUEST_URI} !folder/\n    RewriteRule (.*) /folder/$1 [L]    domain-name.com  - Type your own domain name    folder  - Type the name of the sub-folder which has the test/development website", 
+            "title": "Change document root folder"
+        }, 
+        {
+            "location": "/Apache/htaccess/#redirect-from-root-folder-to-subfolder", 
+            "text": "RewriteRule ^$ /site [L]  don't forget about use it:      Options +FollowSymLinks\n    RewriteEngine On", 
+            "title": "Redirect from root folder to subfolder"
+        }, 
+        {
+            "location": "/Apache/mod_headers/", 
+            "text": "Header Access Control\n\n\nIf you have errors like a:\n\n\nNo 'Access-Control-Allow-Origin' header is present on the requested resource.\n\nThe value of the 'Access-Control-Allow-Credentials' header in the response is '' which must be 'true' when the request's credentials mode is 'include'.\n\nThe value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'\n\n\n\nadd into mod_headers section\n\n\nIfModule mod_headers.c\n\n    Header set Access-Control-Allow-Origin http://your.site.ru\n    Header set Access-Control-Allow-Credentials true\n\n/IfModule\n\n\n\n\n\nSource stackoverflow", 
+            "title": "Mod headers"
+        }, 
+        {
+            "location": "/Apache/mod_headers/#header-access-control", 
+            "text": "If you have errors like a:  No 'Access-Control-Allow-Origin' header is present on the requested resource.\n\nThe value of the 'Access-Control-Allow-Credentials' header in the response is '' which must be 'true' when the request's credentials mode is 'include'.\n\nThe value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'  add into mod_headers section  IfModule mod_headers.c \n    Header set Access-Control-Allow-Origin http://your.site.ru\n    Header set Access-Control-Allow-Credentials true /IfModule   Source stackoverflow", 
+            "title": "Header Access Control"
+        }, 
+        {
+            "location": "/Apache/virtual_host/", 
+            "text": "Basic authentication in virtual hosts\n\n\nVirtualHost *:80\n\n\n    \nDirectory \n/directory/path\n\n        Deny from all\n        #Allow from (You may set IP here / to access without password)\n        AuthUserFile /path/to/.htpasswd\n        AuthName authorization\n        AuthType Basic\n        require valid-user\n    \n/Directory\n\n    ...\n\n/VirtualHost\n\n\n\n\n\nYou can also generate \n.htpasswd\n file, for new file:\n\n\nsudo htpasswd -c /srv/auth/.htpasswd username\n\n\nTo append to existing file:\n\n\nsudo htpasswd -b /srv/auth/.htpasswd username1 username2", 
+            "title": "Virtual host"
+        }, 
+        {
+            "location": "/Apache/virtual_host/#basic-authentication-in-virtual-hosts", 
+            "text": "VirtualHost *:80 \n\n     Directory  /directory/path \n        Deny from all\n        #Allow from (You may set IP here / to access without password)\n        AuthUserFile /path/to/.htpasswd\n        AuthName authorization\n        AuthType Basic\n        require valid-user\n     /Directory \n    ... /VirtualHost   You can also generate  .htpasswd  file, for new file:  sudo htpasswd -c /srv/auth/.htpasswd username  To append to existing file:  sudo htpasswd -b /srv/auth/.htpasswd username1 username2", 
+            "title": "Basic authentication in virtual hosts"
+        }, 
+        {
+            "location": "/MariaDB/install/", 
+            "text": "Step #1: Add the MariaDB Repository\n\n\nThe software-properties-common package should already be installed, but just in case:\n\n\nsudo apt-get install software-properties-common\n\n\nTo find which repo you should use with the \nMariaDB repository generator\n. We\u2019re going to add the Ubuntu 14.04 \u201ctrusty\u201d \nMariaDB 5.5\n repository.\n\n\nWe\u2019ll import the MariaDB public key used by the package management system:\n\n\nsudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db\n\n\nThen we\u2019ll add the MariaDB repository:\n\n\nsudo add-apt-repository 'deb http://mirror.jmu.edu/pub/mariadb/repo/5.5/ubuntu trusty main'\n\n\nNow reload the package database:\n\n\nsudo apt-get update\n\n\nStep #2: Install MariaDB\n\n\nAt this point, installing MariaDB is as simple as running just one command:\n\n\nsudo apt-get install mariadb-server\n\n\nYou may receive the following prompt or something similar:\n\n\nAfter this operation, 116 MB of additional disk space will be used. Do you want to continue? [Y/n]\n\n\nEnter Y to continue.\n\n\nNext you\u2019ll be asked:\n\n\nNew password for the MariaDB \u201croot\u201d user:\n\n\nThis is an administrative account in MariaDB with elevated privileges; enter a strong password.\n\n\nThen you\u2019ll be asked to verify the root MariaDB password:\n\n\nRepeat password for the MariaDB \u201croot\u201d user:\n\n\nThat\u2019s it! Your basic MariaDB installation is now complete!\n\n\nBe sure to stop MariaDB before proceeding to the next step:\n\n\nsudo service mysql stop\n\n\nStep #3: Configure and Secure MariaDB for Use\n\n\nNow we\u2019ll instruct MariaDB to create its database directory structure:\n\n\nsudo mysql_install_db\n\n\nStart MariaDB:\n\n\nsudo service mysql start\n\n\nAnd now let\u2019s secure MariaDB by removing the test databases and anonymous user created by default:\n\n\nsudo mysql_secure_installation\n\n\nStep #4: Verify MariaDB Installation\n\n\nYou can check the version of the MariaDB installation with the following command:\n\n\nmysql -V\n\n\nEnter the MariaDB command client:\n\n\nmysql -p\n\n\nTo stop MariaDB:\n\n\nsudo service mysql stop\n\n\nTo start MariaDB:\n\n\nsudo service mysql start\n\n\nTo check the status of MariaDB:\n\n\nsudo service mysql status\n\n\nTo restart MariaDB:\n\n\nsudo service mysql restart", 
+            "title": "Install"
+        }, 
+        {
+            "location": "/MariaDB/install/#step-1-add-the-mariadb-repository", 
+            "text": "The software-properties-common package should already be installed, but just in case:  sudo apt-get install software-properties-common  To find which repo you should use with the  MariaDB repository generator . We\u2019re going to add the Ubuntu 14.04 \u201ctrusty\u201d  MariaDB 5.5  repository.  We\u2019ll import the MariaDB public key used by the package management system:  sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db  Then we\u2019ll add the MariaDB repository:  sudo add-apt-repository 'deb http://mirror.jmu.edu/pub/mariadb/repo/5.5/ubuntu trusty main'  Now reload the package database:  sudo apt-get update", 
+            "title": "Step #1: Add the MariaDB Repository"
+        }, 
+        {
+            "location": "/MariaDB/install/#step-2-install-mariadb", 
+            "text": "At this point, installing MariaDB is as simple as running just one command:  sudo apt-get install mariadb-server  You may receive the following prompt or something similar:  After this operation, 116 MB of additional disk space will be used. Do you want to continue? [Y/n]  Enter Y to continue.  Next you\u2019ll be asked:  New password for the MariaDB \u201croot\u201d user:  This is an administrative account in MariaDB with elevated privileges; enter a strong password.  Then you\u2019ll be asked to verify the root MariaDB password:  Repeat password for the MariaDB \u201croot\u201d user:  That\u2019s it! Your basic MariaDB installation is now complete!  Be sure to stop MariaDB before proceeding to the next step:  sudo service mysql stop", 
+            "title": "Step #2: Install MariaDB"
+        }, 
+        {
+            "location": "/MariaDB/install/#step-3-configure-and-secure-mariadb-for-use", 
+            "text": "Now we\u2019ll instruct MariaDB to create its database directory structure:  sudo mysql_install_db  Start MariaDB:  sudo service mysql start  And now let\u2019s secure MariaDB by removing the test databases and anonymous user created by default:  sudo mysql_secure_installation", 
+            "title": "Step #3: Configure and Secure MariaDB for Use"
+        }, 
+        {
+            "location": "/MariaDB/install/#step-4-verify-mariadb-installation", 
+            "text": "You can check the version of the MariaDB installation with the following command:  mysql -V  Enter the MariaDB command client:  mysql -p  To stop MariaDB:  sudo service mysql stop  To start MariaDB:  sudo service mysql start  To check the status of MariaDB:  sudo service mysql status  To restart MariaDB:  sudo service mysql restart", 
+            "title": "Step #4: Verify MariaDB Installation"
+        }, 
+        {
+            "location": "/MySQL/user/", 
+            "text": "Create user with password\n\n\nCREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';\n\n\n\n\nGrant privileges\n\n\nGRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';\n\n\n\n\nCheck privileges\n\n\nFLUSH PRIVILEGES;\n\n\n\n\nDelete user\n\n\nDROP USER \u2018demo\u2019@\u2018localhost\u2019;\n\n\n\n\nList of privileges and description\n\n\n\n\nALL PRIVILEGES\n - \u043a\u0430\u043a \u043c\u044b \u0432\u0438\u0434\u0435\u043b\u0438 \u0440\u0430\u043d\u0435\u0435, \u044d\u0442\u043e \u0434\u0430\u0441\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044e MySQL \u043f\u043e\u043b\u043d\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0439 \u0431\u0430\u0437\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 (\u0435\u0441\u043b\u0438 \u0431\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u0430, \u0442\u043e \u043a\u043e \u0432\u0441\u0435\u043c).\n\n\nCREATE\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u043d\u043e\u0432\u044b\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.\n\n\nDROP\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.\n\n\nDELETE\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0438\u0437 \u0442\u0430\u0431\u043b\u0438\u0446.\n\n\nINSERT\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0443.\n\n\nSELECT\n - \u043f\u043e\u0432\u043e\u043b\u0438\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u043c\u0430\u043d\u0434\u0443 Select \u0434\u043b\u044f \u0447\u0442\u0435\u043d\u0438\u044f \u0438\u0437 \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445.\n\n\nUPDATE\n - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0442\u0430\u0431\u043b\u0438\u0446.\n\n\nGRANT OPTION\n - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u043d\u0430\u0437\u043d\u0430\u0447\u0430\u0442\u044c \u0438\u043b\u0438 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u0434\u043b\u044f \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.\n\n\n\n\nAdd privileges\n\n\nGRANT [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] TO \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@'localhost\u2019;\n\n\n\n\nRemove privileges\n\n\nREVOKE [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] FROM \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@\u2018localhost\u2019;", 
+            "title": "User"
+        }, 
+        {
+            "location": "/MySQL/user/#create-user-with-password", 
+            "text": "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';", 
+            "title": "Create user with password"
+        }, 
+        {
+            "location": "/MySQL/user/#grant-privileges", 
+            "text": "GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';", 
+            "title": "Grant privileges"
+        }, 
+        {
+            "location": "/MySQL/user/#check-privileges", 
+            "text": "FLUSH PRIVILEGES;", 
+            "title": "Check privileges"
+        }, 
+        {
+            "location": "/MySQL/user/#delete-user", 
+            "text": "DROP USER \u2018demo\u2019@\u2018localhost\u2019;", 
+            "title": "Delete user"
+        }, 
+        {
+            "location": "/MySQL/user/#list-of-privileges-and-description", 
+            "text": "ALL PRIVILEGES  - \u043a\u0430\u043a \u043c\u044b \u0432\u0438\u0434\u0435\u043b\u0438 \u0440\u0430\u043d\u0435\u0435, \u044d\u0442\u043e \u0434\u0430\u0441\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044e MySQL \u043f\u043e\u043b\u043d\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0439 \u0431\u0430\u0437\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 (\u0435\u0441\u043b\u0438 \u0431\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u0430, \u0442\u043e \u043a\u043e \u0432\u0441\u0435\u043c).  CREATE  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u043d\u043e\u0432\u044b\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.  DROP  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.  DELETE  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0438\u0437 \u0442\u0430\u0431\u043b\u0438\u0446.  INSERT  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0443.  SELECT  - \u043f\u043e\u0432\u043e\u043b\u0438\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u043c\u0430\u043d\u0434\u0443 Select \u0434\u043b\u044f \u0447\u0442\u0435\u043d\u0438\u044f \u0438\u0437 \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445.  UPDATE  - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0442\u0430\u0431\u043b\u0438\u0446.  GRANT OPTION  - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u043d\u0430\u0437\u043d\u0430\u0447\u0430\u0442\u044c \u0438\u043b\u0438 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u0434\u043b\u044f \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.", 
+            "title": "List of privileges and description"
+        }, 
+        {
+            "location": "/MySQL/user/#add-privileges", 
+            "text": "GRANT [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] TO \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@'localhost\u2019;", 
+            "title": "Add privileges"
+        }, 
+        {
+            "location": "/MySQL/user/#remove-privileges", 
+            "text": "REVOKE [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] FROM \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@\u2018localhost\u2019;", 
+            "title": "Remove privileges"
+        }, 
+        {
             "location": "/PHP/errors/", 
             "text": "Call to undefined function imagecreatefrompng()\n\n\nsudo apt-get install php7.0-gd\n\n\nPDO mysql extension is not installed\n\n\nsudo apt-get install php7.0-gd php7.0-mysql\n\n\nThe mbstring extension is missing\n\n\nsudo apt-get install php-mbstring php7.0-mbstring php-gettext libapache2-mod-php7.0\n\n\nthen\n\n\nsudo phpenmod mcrypt\nsudo phpenmod mbstring\nsudo service apache2 restart", 
             "title": "Errors"
@@ -112,13 +212,13 @@
         }, 
         {
             "location": "/Ubuntu/errors/", 
-            "text": "The program add-apt-repository is currently not installed\n\n\nsudo apt-get install software-properties-common\n\n\nand/or\n\n\nsudo apt-get install python3-software-properties\n\n\nand/or\n\n\nsudo apt-get install python-software-properties\n\n\nSource Askubuntu", 
+            "text": "Convert files to encoding\n\n\nIf you have problems withs files encoding\n\n\nInstall \nconvmv\n: \nsudo apt-get install convmv\n\n\nconvmv -r --notest -f windows-1251 -t UTF-8 *\n\n\n\n\nwindows-1251\n initial encoding\n\n\nUTF-8\n final encoding\n\n\n*\n all files", 
             "title": "Errors"
         }, 
         {
-            "location": "/Ubuntu/errors/#the-program-add-apt-repository-is-currently-not-installed", 
-            "text": "sudo apt-get install software-properties-common  and/or  sudo apt-get install python3-software-properties  and/or  sudo apt-get install python-software-properties  Source Askubuntu", 
-            "title": "The program add-apt-repository is currently not installed"
+            "location": "/Ubuntu/errors/#convert-files-to-encoding", 
+            "text": "If you have problems withs files encoding  Install  convmv :  sudo apt-get install convmv  convmv -r --notest -f windows-1251 -t UTF-8 *   windows-1251  initial encoding  UTF-8  final encoding  *  all files", 
+            "title": "Convert files to encoding"
         }, 
         {
             "location": "/Ubuntu/grep/", 
@@ -129,6 +229,16 @@
             "location": "/Ubuntu/grep/#find-text-in-files", 
             "text": "grep -Ril \"text-to-find-here\" /   i  ignore case (optional in your case).  R  recursive.  l  \"show the file name, not the result itself\".  /  starting at the root of your machine.", 
             "title": "Find text in files"
+        }, 
+        {
+            "location": "/Ubuntu/other/", 
+            "text": "The program add-apt-repository is currently not installed\n\n\nsudo apt-get install software-properties-common\n\n\nand/or\n\n\nsudo apt-get install python3-software-properties\n\n\nand/or\n\n\nsudo apt-get install python-software-properties\n\n\nSource Askubuntu", 
+            "title": "Other"
+        }, 
+        {
+            "location": "/Ubuntu/other/#the-program-add-apt-repository-is-currently-not-installed", 
+            "text": "sudo apt-get install software-properties-common  and/or  sudo apt-get install python3-software-properties  and/or  sudo apt-get install python-software-properties  Source Askubuntu", 
+            "title": "The program add-apt-repository is currently not installed"
         }, 
         {
             "location": "/Ubuntu/user/", 
@@ -154,6 +264,26 @@
             "location": "/Ubuntu/user/#delete-user-with-home-directory", 
             "text": "deluser --remove-home newUser", 
             "title": "Delete user with home directory"
+        }, 
+        {
+            "location": "/Yii2/errors/", 
+            "text": "A circular dependency is detected for bundle...\n\n\nif u have this error after deployment yii2 application, just follow the command\n\n\ncomposer require fxp/composer-asset-plugin\n\n\nCould not find driver\n\n\nThis error can be displayed after \nyii migrate\n command. That means, u have no installed or not uncommented php-mysql extension\n\n\n\n\nFirst, try to uncomment \nextension=pdo_mysql\n extension line in \nphp.ini\n.\n\n\nNext, try to install (if u have not done this before):\n\n\n\n\nsudo apt-get install php7.1-mysql\n\n\nThe file or directory to be published does not exist vendor/bower/jquery/dist\n\n\nSolutions:\n\n\n\n\nadd into file \n/common/config/main.php\n\n\n\n\n'aliases' =\n [ \n             '@bower' =\n '@vendor/bower-asset', \n             '@npm'   =\n '@vendor/npm-asset', \n         ],\n\n\n\n\n\n\n\n\nor you can just rename folder \n/vendor/bower-asset\n to \nbower\n\n\n\n\n\n\nor you can create symlink from \n/vendor/bower-asset\n to \nbower\n folder", 
+            "title": "Errors"
+        }, 
+        {
+            "location": "/Yii2/errors/#a-circular-dependency-is-detected-for-bundle", 
+            "text": "if u have this error after deployment yii2 application, just follow the command  composer require fxp/composer-asset-plugin", 
+            "title": "A circular dependency is detected for bundle..."
+        }, 
+        {
+            "location": "/Yii2/errors/#could-not-find-driver", 
+            "text": "This error can be displayed after  yii migrate  command. That means, u have no installed or not uncommented php-mysql extension   First, try to uncomment  extension=pdo_mysql  extension line in  php.ini .  Next, try to install (if u have not done this before):   sudo apt-get install php7.1-mysql", 
+            "title": "Could not find driver"
+        }, 
+        {
+            "location": "/Yii2/errors/#the-file-or-directory-to-be-published-does-not-exist-vendorbowerjquerydist", 
+            "text": "Solutions:   add into file  /common/config/main.php   'aliases' =  [ \n             '@bower' =  '@vendor/bower-asset', \n             '@npm'   =  '@vendor/npm-asset', \n         ],    or you can just rename folder  /vendor/bower-asset  to  bower    or you can create symlink from  /vendor/bower-asset  to  bower  folder", 
+            "title": "The file or directory to be published does not exist vendor/bower/jquery/dist"
         }
     ]
 }

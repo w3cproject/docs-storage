@@ -65,6 +65,47 @@
           
             <li class="toctree-l1">
 		
+    <span class="caption-text">Apache</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Apache/htaccess/">Htaccess</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Apache/mod_headers/">Mod headers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Apache/virtual_host/">Virtual host</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">MariaDB</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../MariaDB/install/">Install</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">MySQL</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../MySQL/user/">User</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <span class="caption-text">PHP</span>
     <ul class="subnav">
                 <li class="">
@@ -102,7 +143,7 @@
     <a class="current" href="./">Errors</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#the-program-add-apt-repository-is-currently-not-installed">The program add-apt-repository is currently not installed</a></li>
+    <li class="toctree-l3"><a href="#convert-files-to-encoding">Convert files to encoding</a></li>
     
 
     </ul>
@@ -113,7 +154,22 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../other/">Other</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../user/">User</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Yii2</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Yii2/errors/">Errors</a>
                 </li>
     </ul>
 	    </li>
@@ -154,13 +210,15 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="the-program-add-apt-repository-is-currently-not-installed">The program add-apt-repository is currently not installed</h2>
-<p><code>sudo apt-get install software-properties-common</code></p>
-<p>and/or</p>
-<p><code>sudo apt-get install python3-software-properties</code></p>
-<p>and/or</p>
-<p><code>sudo apt-get install python-software-properties</code></p>
-<p><a href="https://askubuntu.com/a/493467">Source Askubuntu</a></p>
+                <h2 id="convert-files-to-encoding">Convert files to encoding</h2>
+<p>If you have problems withs files encoding</p>
+<p>Install <code>convmv</code>: <code>sudo apt-get install convmv</code></p>
+<p><code>convmv -r --notest -f windows-1251 -t UTF-8 *</code></p>
+<ul>
+<li><code>windows-1251</code> initial encoding</li>
+<li><code>UTF-8</code> final encoding</li>
+<li><code>*</code> all files</li>
+</ul>
               
             </div>
           </div>
