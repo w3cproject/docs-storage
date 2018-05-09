@@ -1,13 +1,11 @@
-## The program add-apt-repository is currently not installed
+## Convert files to encoding
 
-`sudo apt-get install software-properties-common`
+If you have problems withs files encoding
 
-and/or
+Install `convmv`: `sudo apt-get install convmv`
 
-`sudo apt-get install python3-software-properties`
+`convmv -r --notest -f windows-1251 -t UTF-8 *`
 
-and/or
-
-`sudo apt-get install python-software-properties`
-
-[Source Askubuntu](https://askubuntu.com/a/493467)
+- `windows-1251` initial encoding
+- `UTF-8` final encoding
+- `*` all files
