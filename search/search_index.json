@@ -232,13 +232,18 @@
         }, 
         {
             "location": "/Ubuntu/other/", 
-            "text": "The program add-apt-repository is currently not installed\n\n\nsudo apt-get install software-properties-common\n\n\nand/or\n\n\nsudo apt-get install python3-software-properties\n\n\nand/or\n\n\nsudo apt-get install python-software-properties\n\n\nSource Askubuntu", 
+            "text": "The program add-apt-repository is currently not installed\n\n\nsudo apt-get install software-properties-common\n\n\nand/or\n\n\nsudo apt-get install python3-software-properties\n\n\nand/or\n\n\nsudo apt-get install python-software-properties\n\n\nSource Askubuntu\n\n\nConvert files\n\n\nconvmv -r --notest -f windows-1251 -t UTF-8 *\n\n\n\n\n\n\nwindows-1251\n - encode from\n\n\nUTF-8\n - encode to", 
             "title": "Other"
         }, 
         {
             "location": "/Ubuntu/other/#the-program-add-apt-repository-is-currently-not-installed", 
             "text": "sudo apt-get install software-properties-common  and/or  sudo apt-get install python3-software-properties  and/or  sudo apt-get install python-software-properties  Source Askubuntu", 
             "title": "The program add-apt-repository is currently not installed"
+        }, 
+        {
+            "location": "/Ubuntu/other/#convert-files", 
+            "text": "convmv -r --notest -f windows-1251 -t UTF-8 *   windows-1251  - encode from  UTF-8  - encode to", 
+            "title": "Convert files"
         }, 
         {
             "location": "/Ubuntu/user/", 
