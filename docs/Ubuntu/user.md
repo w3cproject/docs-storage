@@ -1,15 +1,23 @@
 ## Create User
 
-`adduser newUser`
+    adduser newUser
 
 ## Change user group to sudo
 
-`usermod -aG sudo newUser`
+    usermod -aG sudo newUser
 
 ## Delete user
 
-`deluser newUser`
+    deluser newUser
 
 ## Delete user with home directory
 
-`deluser --remove-home newUser`
+    deluser --remove-home newUser
+
+## Change user password
+
+    passwd username
+    
+## Show The Groups a User Is In
+
+    groups username
