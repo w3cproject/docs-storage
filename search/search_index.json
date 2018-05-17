@@ -222,12 +222,12 @@
         }, 
         {
             "location": "/Ubuntu/grep/", 
-            "text": "Find text in files\n\n\ngrep -Ril \"text-to-find-here\" /\n\n\n\n\ni\n ignore case (optional in your case).\n\n\nR\n recursive.\n\n\nl\n \"show the file name, not the result itself\".\n\n\n/\n starting at the root of your machine.", 
+            "text": "Find text in files\n\n\ngrep -rnw '/path/to/somewhere/' -e 'pattern'\n\n\n\n\n\n-r\n or \n-R\n is recursive,\n\n\n-n\n is line number, and\n\n\n-w\n stands for match the whole word.\n\n\n-l\n (lower-case L) can be added to just give the file name of matching files.\n\n\n\n\nAlong with these, \n--exclude\n, \n--include\n, \n--exclude-dir\n flags could be used for efficient searching:\n\n\n\n\n\n\nThis will only search through those files which have .c or .h extensions:\n\n\ngrep --include=\\*.{c,h} -rnw '/path/to/somewhere/' -e \"pattern\"\n\n\n\n\n\n\n\nThis will exclude searching all the files ending with .o extension:\n\n\ngrep --exclude=*.o -rnw '/path/to/somewhere/' -e \"pattern\"\n\n\n\n\n\n\n\nFor directories it's possible to exclude a particular directory(ies) through \n--exclude-dir\n parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:\n\n\ngrep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/somewhere/' -e \"pattern\"", 
             "title": "Grep"
         }, 
         {
             "location": "/Ubuntu/grep/#find-text-in-files", 
-            "text": "grep -Ril \"text-to-find-here\" /   i  ignore case (optional in your case).  R  recursive.  l  \"show the file name, not the result itself\".  /  starting at the root of your machine.", 
+            "text": "grep -rnw '/path/to/somewhere/' -e 'pattern'   -r  or  -R  is recursive,  -n  is line number, and  -w  stands for match the whole word.  -l  (lower-case L) can be added to just give the file name of matching files.   Along with these,  --exclude ,  --include ,  --exclude-dir  flags could be used for efficient searching:    This will only search through those files which have .c or .h extensions:  grep --include=\\*.{c,h} -rnw '/path/to/somewhere/' -e \"pattern\"    This will exclude searching all the files ending with .o extension:  grep --exclude=*.o -rnw '/path/to/somewhere/' -e \"pattern\"    For directories it's possible to exclude a particular directory(ies) through  --exclude-dir  parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:  grep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/somewhere/' -e \"pattern\"", 
             "title": "Find text in files"
         }, 
         {
@@ -262,7 +262,7 @@
         }, 
         {
             "location": "/Ubuntu/user/", 
-            "text": "Create User\n\n\nadduser newUser\n\n\nChange user group to sudo\n\n\nusermod -aG sudo newUser\n\n\nDelete user\n\n\ndeluser newUser\n\n\nDelete user with home directory\n\n\ndeluser --remove-home newUser", 
+            "text": "Create User\n\n\nadduser newUser\n\n\n\nChange user group to sudo\n\n\nusermod -aG sudo newUser\n\n\n\nDelete user\n\n\ndeluser newUser\n\n\n\nDelete user with home directory\n\n\ndeluser --remove-home newUser\n\n\n\nChange user password\n\n\npasswd username\n\n\n\nShow The Groups a User Is In\n\n\ngroups username", 
             "title": "User"
         }, 
         {
@@ -284,6 +284,16 @@
             "location": "/Ubuntu/user/#delete-user-with-home-directory", 
             "text": "deluser --remove-home newUser", 
             "title": "Delete user with home directory"
+        }, 
+        {
+            "location": "/Ubuntu/user/#change-user-password", 
+            "text": "passwd username", 
+            "title": "Change user password"
+        }, 
+        {
+            "location": "/Ubuntu/user/#show-the-groups-a-user-is-in", 
+            "text": "groups username", 
+            "title": "Show The Groups a User Is In"
         }, 
         {
             "location": "/Yii2/errors/", 
