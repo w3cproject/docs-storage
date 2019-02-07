@@ -1,0 +1,354 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "W3CProject storage",
+            "title": "Home"
+        },
+        {
+            "location": "/#w3cproject-storage",
+            "text": "",
+            "title": "W3CProject storage"
+        },
+        {
+            "location": "/1C-Bitrix CMS/errors/",
+            "text": "ACTIVE_FROM which is not in SELECT list\n\n\nACTIVE_FROM which is not in SELECT list; this is incompatible with DISTINCT\n\n\n\nadd into \nmy.cnf\n file\n\n\nslq-mode = \"\"\n\n\nor add into \nbitrix/php_interface/after_connect.php\n file",
+            "title": "Errors"
+        },
+        {
+            "location": "/1C-Bitrix CMS/errors/#active_from-which-is-not-in-select-list",
+            "text": "ACTIVE_FROM which is not in SELECT list; this is incompatible with DISTINCT  add into  my.cnf  file  slq-mode = \"\"  or add into  bitrix/php_interface/after_connect.php  file",
+            "title": "ACTIVE_FROM which is not in SELECT list"
+        },
+        {
+            "location": "/Apache/htaccess/",
+            "text": "Change document root folder\n\n\n    RewriteEngine on\n    RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]\n    RewriteCond %{HTTP_HOST} ^www.domain-name.com$\n    RewriteCond %{REQUEST_URI} !folder/\n    RewriteRule (.*) /folder/$1 [L]\n\n\n\n\n\n\n\n\ndomain-name.com\n - Type your own domain name\n\n\n\n\n\n\nfolder\n - Type the name of the sub-folder which has the test/development website\n\n\n\n\n\n\nRedirect from root folder to subfolder\n\n\nRewriteRule ^$ /site [L]\n\n\ndon't forget about use it:\n\n\n    Options +FollowSymLinks\n    RewriteEngine On",
+            "title": "Htaccess"
+        },
+        {
+            "location": "/Apache/htaccess/#change-document-root-folder",
+            "text": "RewriteEngine on\n    RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]\n    RewriteCond %{HTTP_HOST} ^www.domain-name.com$\n    RewriteCond %{REQUEST_URI} !folder/\n    RewriteRule (.*) /folder/$1 [L]    domain-name.com  - Type your own domain name    folder  - Type the name of the sub-folder which has the test/development website",
+            "title": "Change document root folder"
+        },
+        {
+            "location": "/Apache/htaccess/#redirect-from-root-folder-to-subfolder",
+            "text": "RewriteRule ^$ /site [L]  don't forget about use it:      Options +FollowSymLinks\n    RewriteEngine On",
+            "title": "Redirect from root folder to subfolder"
+        },
+        {
+            "location": "/Apache/lets_encrypt/",
+            "text": "How To Secure Apache with Let's Encrypt on Ubuntu 18.04\n\n\nStep 1 \u2014 Installing Certbot\n\n\nsudo apt install python-certbot-apache\n\nsudo add-apt-repository ppa:certbot/certbot\n\n\n\n\nStep 2 \u2014 Set Up the SSL Certificate\n\n\nsudo nano /etc/apache2/sites-available/example.com.conf\n\nFind the existing ServerName line. It should look like this:\n\nServerName example.com;\n\nsudo systemctl reload apache2\n\n\n\n\nStep 3 \u2014 Allowing HTTPS Through the Firewall\n\n\nsudo ufw status\n\n\n\n\nIt will probably look like this, meaning that only HTTP traffic is allowed to the web server:\n\n\nOutput\nStatus: active\n\nTo                         Action      From\n--                         ------      ----\nOpenSSH                    ALLOW       Anywhere                  \nApache                     ALLOW       Anywhere                  \nOpenSSH (v6)               ALLOW       Anywhere (v6)             \nApache (v6)                ALLOW       Anywhere (v6)\n\n\n\n\nTo additionally let in HTTPS traffic, allow the Apache Full profile and delete the redundant Apache profile allowance:\n\n\nsudo ufw allow 'Apache Full'\nsudo ufw delete allow 'Apache'\n\n\n\n\nStep 4 \u2014 Obtaining an SSL Certificate\n\n\nsudo certbot --apache -d example.com -d www.example.com\n\n\n\n\nThis runs certbot with the --apache plugin, using -d to specify the names you'd like the certificate to be valid for.\n\n\nStep 5 \u2014 Verifying Certbot Auto-Renewal\n\n\nLet's Encrypt's certificates are only valid for ninety days. This is to encourage users to automate their certificate renewal process. The \ncertbot\n package we installed takes care of this for us by adding a renew script to \n/etc/cron.d\n. This script runs twice a day and will automatically renew any certificate that's within thirty days of expiration.\n\n\nTo test the renewal process, you can do a dry run with \ncertbot\n:\n\n\nsudo certbot renew --dry-run\n\n\n\n\nSource digitalocean",
+            "title": "Lets encrypt"
+        },
+        {
+            "location": "/Apache/lets_encrypt/#how-to-secure-apache-with-lets-encrypt-on-ubuntu-1804",
+            "text": "",
+            "title": "How To Secure Apache with Let's Encrypt on Ubuntu 18.04"
+        },
+        {
+            "location": "/Apache/lets_encrypt/#step-1-installing-certbot",
+            "text": "sudo apt install python-certbot-apache\n\nsudo add-apt-repository ppa:certbot/certbot",
+            "title": "Step 1 \u2014 Installing Certbot"
+        },
+        {
+            "location": "/Apache/lets_encrypt/#step-2-set-up-the-ssl-certificate",
+            "text": "sudo nano /etc/apache2/sites-available/example.com.conf\n\nFind the existing ServerName line. It should look like this:\n\nServerName example.com;\n\nsudo systemctl reload apache2",
+            "title": "Step 2 \u2014 Set Up the SSL Certificate"
+        },
+        {
+            "location": "/Apache/lets_encrypt/#step-3-allowing-https-through-the-firewall",
+            "text": "sudo ufw status  It will probably look like this, meaning that only HTTP traffic is allowed to the web server:  Output\nStatus: active\n\nTo                         Action      From\n--                         ------      ----\nOpenSSH                    ALLOW       Anywhere                  \nApache                     ALLOW       Anywhere                  \nOpenSSH (v6)               ALLOW       Anywhere (v6)             \nApache (v6)                ALLOW       Anywhere (v6)  To additionally let in HTTPS traffic, allow the Apache Full profile and delete the redundant Apache profile allowance:  sudo ufw allow 'Apache Full'\nsudo ufw delete allow 'Apache'",
+            "title": "Step 3 \u2014 Allowing HTTPS Through the Firewall"
+        },
+        {
+            "location": "/Apache/lets_encrypt/#step-4-obtaining-an-ssl-certificate",
+            "text": "sudo certbot --apache -d example.com -d www.example.com  This runs certbot with the --apache plugin, using -d to specify the names you'd like the certificate to be valid for.",
+            "title": "Step 4 \u2014 Obtaining an SSL Certificate"
+        },
+        {
+            "location": "/Apache/lets_encrypt/#step-5-verifying-certbot-auto-renewal",
+            "text": "Let's Encrypt's certificates are only valid for ninety days. This is to encourage users to automate their certificate renewal process. The  certbot  package we installed takes care of this for us by adding a renew script to  /etc/cron.d . This script runs twice a day and will automatically renew any certificate that's within thirty days of expiration.  To test the renewal process, you can do a dry run with  certbot :  sudo certbot renew --dry-run  Source digitalocean",
+            "title": "Step 5 \u2014 Verifying Certbot Auto-Renewal"
+        },
+        {
+            "location": "/Apache/mod_headers/",
+            "text": "Header Access Control\n\n\nIf you have errors like a:\n\n\nNo 'Access-Control-Allow-Origin' header is present on the requested resource.\n\nThe value of the 'Access-Control-Allow-Credentials' header in the response is '' which must be 'true' when the request's credentials mode is 'include'.\n\nThe value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'\n\n\n\nadd into mod_headers section\n\n\n<IfModule mod_headers.c>\n    Header set Access-Control-Allow-Origin http://your.site.ru\n    Header set Access-Control-Allow-Credentials true\n</IfModule>\n\n\n\n\nSource stackoverflow",
+            "title": "Mod headers"
+        },
+        {
+            "location": "/Apache/mod_headers/#header-access-control",
+            "text": "If you have errors like a:  No 'Access-Control-Allow-Origin' header is present on the requested resource.\n\nThe value of the 'Access-Control-Allow-Credentials' header in the response is '' which must be 'true' when the request's credentials mode is 'include'.\n\nThe value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'  add into mod_headers section  <IfModule mod_headers.c>\n    Header set Access-Control-Allow-Origin http://your.site.ru\n    Header set Access-Control-Allow-Credentials true\n</IfModule>  Source stackoverflow",
+            "title": "Header Access Control"
+        },
+        {
+            "location": "/Apache/virtual_host/",
+            "text": "Basic authentication in virtual hosts\n\n\n<VirtualHost *:80>\n\n    <Directory \"/directory/path\">\n        Deny from all\n        #Allow from (You may set IP here / to access without password)\n        AuthUserFile /path/to/.htpasswd\n        AuthName authorization\n        AuthType Basic\n        require valid-user\n    </Directory>\n    ...\n</VirtualHost>\n\n\n\n\nYou can also generate \n.htpasswd\n file, for new file:\n\n\nsudo htpasswd -c /srv/auth/.htpasswd username\n\n\nTo append to existing file:\n\n\nsudo htpasswd -b /srv/auth/.htpasswd username1 username2",
+            "title": "Virtual host"
+        },
+        {
+            "location": "/Apache/virtual_host/#basic-authentication-in-virtual-hosts",
+            "text": "<VirtualHost *:80>\n\n    <Directory \"/directory/path\">\n        Deny from all\n        #Allow from (You may set IP here / to access without password)\n        AuthUserFile /path/to/.htpasswd\n        AuthName authorization\n        AuthType Basic\n        require valid-user\n    </Directory>\n    ...\n</VirtualHost>  You can also generate  .htpasswd  file, for new file:  sudo htpasswd -c /srv/auth/.htpasswd username  To append to existing file:  sudo htpasswd -b /srv/auth/.htpasswd username1 username2",
+            "title": "Basic authentication in virtual hosts"
+        },
+        {
+            "location": "/MariaDB/install/",
+            "text": "Step #1: Add the MariaDB Repository\n\n\nThe software-properties-common package should already be installed, but just in case:\n\n\nsudo apt-get install software-properties-common\n\n\nTo find which repo you should use with the \nMariaDB repository generator\n. We\u2019re going to add the Ubuntu 14.04 \u201ctrusty\u201d \nMariaDB 5.5\n repository.\n\n\nWe\u2019ll import the MariaDB public key used by the package management system:\n\n\nsudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db\n\n\nThen we\u2019ll add the MariaDB repository:\n\n\nsudo add-apt-repository 'deb http://mirror.jmu.edu/pub/mariadb/repo/5.5/ubuntu trusty main'\n\n\nNow reload the package database:\n\n\nsudo apt-get update\n\n\nStep #2: Install MariaDB\n\n\nAt this point, installing MariaDB is as simple as running just one command:\n\n\nsudo apt-get install mariadb-server\n\n\nYou may receive the following prompt or something similar:\n\n\nAfter this operation, 116 MB of additional disk space will be used. Do you want to continue? [Y/n]\n\n\nEnter Y to continue.\n\n\nNext you\u2019ll be asked:\n\n\nNew password for the MariaDB \u201croot\u201d user:\n\n\nThis is an administrative account in MariaDB with elevated privileges; enter a strong password.\n\n\nThen you\u2019ll be asked to verify the root MariaDB password:\n\n\nRepeat password for the MariaDB \u201croot\u201d user:\n\n\nThat\u2019s it! Your basic MariaDB installation is now complete!\n\n\nBe sure to stop MariaDB before proceeding to the next step:\n\n\nsudo service mysql stop\n\n\nStep #3: Configure and Secure MariaDB for Use\n\n\nNow we\u2019ll instruct MariaDB to create its database directory structure:\n\n\nsudo mysql_install_db\n\n\nStart MariaDB:\n\n\nsudo service mysql start\n\n\nAnd now let\u2019s secure MariaDB by removing the test databases and anonymous user created by default:\n\n\nsudo mysql_secure_installation\n\n\nStep #4: Verify MariaDB Installation\n\n\nYou can check the version of the MariaDB installation with the following command:\n\n\nmysql -V\n\n\nEnter the MariaDB command client:\n\n\nmysql -p\n\n\nTo stop MariaDB:\n\n\nsudo service mysql stop\n\n\nTo start MariaDB:\n\n\nsudo service mysql start\n\n\nTo check the status of MariaDB:\n\n\nsudo service mysql status\n\n\nTo restart MariaDB:\n\n\nsudo service mysql restart",
+            "title": "Install"
+        },
+        {
+            "location": "/MariaDB/install/#step-1-add-the-mariadb-repository",
+            "text": "The software-properties-common package should already be installed, but just in case:  sudo apt-get install software-properties-common  To find which repo you should use with the  MariaDB repository generator . We\u2019re going to add the Ubuntu 14.04 \u201ctrusty\u201d  MariaDB 5.5  repository.  We\u2019ll import the MariaDB public key used by the package management system:  sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db  Then we\u2019ll add the MariaDB repository:  sudo add-apt-repository 'deb http://mirror.jmu.edu/pub/mariadb/repo/5.5/ubuntu trusty main'  Now reload the package database:  sudo apt-get update",
+            "title": "Step #1: Add the MariaDB Repository"
+        },
+        {
+            "location": "/MariaDB/install/#step-2-install-mariadb",
+            "text": "At this point, installing MariaDB is as simple as running just one command:  sudo apt-get install mariadb-server  You may receive the following prompt or something similar:  After this operation, 116 MB of additional disk space will be used. Do you want to continue? [Y/n]  Enter Y to continue.  Next you\u2019ll be asked:  New password for the MariaDB \u201croot\u201d user:  This is an administrative account in MariaDB with elevated privileges; enter a strong password.  Then you\u2019ll be asked to verify the root MariaDB password:  Repeat password for the MariaDB \u201croot\u201d user:  That\u2019s it! Your basic MariaDB installation is now complete!  Be sure to stop MariaDB before proceeding to the next step:  sudo service mysql stop",
+            "title": "Step #2: Install MariaDB"
+        },
+        {
+            "location": "/MariaDB/install/#step-3-configure-and-secure-mariadb-for-use",
+            "text": "Now we\u2019ll instruct MariaDB to create its database directory structure:  sudo mysql_install_db  Start MariaDB:  sudo service mysql start  And now let\u2019s secure MariaDB by removing the test databases and anonymous user created by default:  sudo mysql_secure_installation",
+            "title": "Step #3: Configure and Secure MariaDB for Use"
+        },
+        {
+            "location": "/MariaDB/install/#step-4-verify-mariadb-installation",
+            "text": "You can check the version of the MariaDB installation with the following command:  mysql -V  Enter the MariaDB command client:  mysql -p  To stop MariaDB:  sudo service mysql stop  To start MariaDB:  sudo service mysql start  To check the status of MariaDB:  sudo service mysql status  To restart MariaDB:  sudo service mysql restart",
+            "title": "Step #4: Verify MariaDB Installation"
+        },
+        {
+            "location": "/MySQL/user/",
+            "text": "Create user with password\n\n\nCREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';\n\n\n\n\nGrant privileges\n\n\nGRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';\n\n\n\n\nCheck privileges\n\n\nFLUSH PRIVILEGES;\n\n\n\n\nDelete user\n\n\nDROP USER \u2018demo\u2019@\u2018localhost\u2019;\n\n\n\n\nList of privileges and description\n\n\n\n\nALL PRIVILEGES\n - \u043a\u0430\u043a \u043c\u044b \u0432\u0438\u0434\u0435\u043b\u0438 \u0440\u0430\u043d\u0435\u0435, \u044d\u0442\u043e \u0434\u0430\u0441\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044e MySQL \u043f\u043e\u043b\u043d\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0439 \u0431\u0430\u0437\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 (\u0435\u0441\u043b\u0438 \u0431\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u0430, \u0442\u043e \u043a\u043e \u0432\u0441\u0435\u043c).\n\n\nCREATE\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u043d\u043e\u0432\u044b\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.\n\n\nDROP\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.\n\n\nDELETE\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0438\u0437 \u0442\u0430\u0431\u043b\u0438\u0446.\n\n\nINSERT\n - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0443.\n\n\nSELECT\n - \u043f\u043e\u0432\u043e\u043b\u0438\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u043c\u0430\u043d\u0434\u0443 Select \u0434\u043b\u044f \u0447\u0442\u0435\u043d\u0438\u044f \u0438\u0437 \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445.\n\n\nUPDATE\n - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0442\u0430\u0431\u043b\u0438\u0446.\n\n\nGRANT OPTION\n - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u043d\u0430\u0437\u043d\u0430\u0447\u0430\u0442\u044c \u0438\u043b\u0438 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u0434\u043b\u044f \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.\n\n\n\n\nAdd privileges\n\n\nGRANT [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] TO \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@'localhost\u2019;\n\n\n\n\nRemove privileges\n\n\nREVOKE [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] FROM \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@\u2018localhost\u2019;",
+            "title": "User"
+        },
+        {
+            "location": "/MySQL/user/#create-user-with-password",
+            "text": "CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';",
+            "title": "Create user with password"
+        },
+        {
+            "location": "/MySQL/user/#grant-privileges",
+            "text": "GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';",
+            "title": "Grant privileges"
+        },
+        {
+            "location": "/MySQL/user/#check-privileges",
+            "text": "FLUSH PRIVILEGES;",
+            "title": "Check privileges"
+        },
+        {
+            "location": "/MySQL/user/#delete-user",
+            "text": "DROP USER \u2018demo\u2019@\u2018localhost\u2019;",
+            "title": "Delete user"
+        },
+        {
+            "location": "/MySQL/user/#list-of-privileges-and-description",
+            "text": "ALL PRIVILEGES  - \u043a\u0430\u043a \u043c\u044b \u0432\u0438\u0434\u0435\u043b\u0438 \u0440\u0430\u043d\u0435\u0435, \u044d\u0442\u043e \u0434\u0430\u0441\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044e MySQL \u043f\u043e\u043b\u043d\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0439 \u0431\u0430\u0437\u0435 \u0434\u0430\u043d\u043d\u044b\u0445 (\u0435\u0441\u043b\u0438 \u0431\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445 \u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u0430, \u0442\u043e \u043a\u043e \u0432\u0441\u0435\u043c).  CREATE  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u043d\u043e\u0432\u044b\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.  DROP  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0442\u0430\u0431\u043b\u0438\u0446\u044b \u0438\u043b\u0438 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445.  DELETE  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0438\u0437 \u0442\u0430\u0431\u043b\u0438\u0446.  INSERT  - \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0443.  SELECT  - \u043f\u043e\u0432\u043e\u043b\u0438\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043a\u043e\u043c\u0430\u043d\u0434\u0443 Select \u0434\u043b\u044f \u0447\u0442\u0435\u043d\u0438\u044f \u0438\u0437 \u0431\u0430\u0437 \u0434\u0430\u043d\u043d\u044b\u0445.  UPDATE  - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0442\u0440\u043e\u043a\u0438 \u0442\u0430\u0431\u043b\u0438\u0446.  GRANT OPTION  - \u043f\u043e\u0437\u0432\u043e\u043b\u0438\u0442 \u043d\u0430\u0437\u043d\u0430\u0447\u0430\u0442\u044c \u0438\u043b\u0438 \u0443\u0434\u0430\u043b\u044f\u0442\u044c \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u0434\u043b\u044f \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.",
+            "title": "List of privileges and description"
+        },
+        {
+            "location": "/MySQL/user/#add-privileges",
+            "text": "GRANT [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] TO \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@'localhost\u2019;",
+            "title": "Add privileges"
+        },
+        {
+            "location": "/MySQL/user/#remove-privileges",
+            "text": "REVOKE [\u0442\u0438\u043f \u043f\u0440\u0430\u0432] ON [\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0431\u0430\u0437\u044b \u0434\u0430\u043d\u043d\u044b\u0445].[\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u0430\u0431\u043b\u0438\u0446\u044b] FROM \u2018[\u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f]\u2019@\u2018localhost\u2019;",
+            "title": "Remove privileges"
+        },
+        {
+            "location": "/PHP/errors/",
+            "text": "Call to undefined function imagecreatefrompng()\n\n\nsudo apt-get install php7.0-gd\n\n\nPDO mysql extension is not installed\n\n\nsudo apt-get install php7.0-gd php7.0-mysql\n\n\nThe mbstring extension is missing\n\n\nsudo apt-get install php-mbstring php7.0-mbstring php-gettext libapache2-mod-php7.0\n\n\nthen\n\n\nsudo phpenmod mcrypt\nsudo phpenmod mbstring\nsudo service apache2 restart",
+            "title": "Errors"
+        },
+        {
+            "location": "/PHP/errors/#call-to-undefined-function-imagecreatefrompng",
+            "text": "sudo apt-get install php7.0-gd",
+            "title": "Call to undefined function imagecreatefrompng()"
+        },
+        {
+            "location": "/PHP/errors/#pdo-mysql-extension-is-not-installed",
+            "text": "sudo apt-get install php7.0-gd php7.0-mysql",
+            "title": "PDO mysql extension is not installed"
+        },
+        {
+            "location": "/PHP/errors/#the-mbstring-extension-is-missing",
+            "text": "sudo apt-get install php-mbstring php7.0-mbstring php-gettext libapache2-mod-php7.0  then  sudo phpenmod mcrypt\nsudo phpenmod mbstring\nsudo service apache2 restart",
+            "title": "The mbstring extension is missing"
+        },
+        {
+            "location": "/PostgreSQL/backup/",
+            "text": "Restore dump with .backup extension (or other)\n\n\npsql -h localhost -p 5433 -d dbName -U UserName -f pathToBackUp.backup\n\n\nor\n\n\npsql -h localhost -p 5433 -U user -d db_name < /directory/archive.sql\n\n\nSource stackoverflow\n\n\nCreate backup\n\n\npg_dump -h localhost -p 5432 -U user -d db_name > backup_name.sql\n\n\nSource stackoverflow",
+            "title": "Backup"
+        },
+        {
+            "location": "/PostgreSQL/backup/#restore-dump-with-backup-extension-or-other",
+            "text": "psql -h localhost -p 5433 -d dbName -U UserName -f pathToBackUp.backup  or  psql -h localhost -p 5433 -U user -d db_name < /directory/archive.sql  Source stackoverflow",
+            "title": "Restore dump with .backup extension (or other)"
+        },
+        {
+            "location": "/PostgreSQL/backup/#create-backup",
+            "text": "pg_dump -h localhost -p 5432 -U user -d db_name > backup_name.sql  Source stackoverflow",
+            "title": "Create backup"
+        },
+        {
+            "location": "/PostgreSQL/errors/",
+            "text": "FATAL: password authentication failed for user \"postgres\"\n\n\nIf you have this error:\n\n\nIf I remember correctly the user \npostgres\n has no \nDB\n password set on Ubuntu by default. That means, that you can login to that account only by using the \npostgres\n OS user account.\n\n\nAssuming, that you have \nroot\n access on the box you can do:\n\n\nsudo -u postgres psql\n\n\nIf any of those commands fail with an error \npsql: FATAL:  password authentication failed for user \"postgres\"\n then check the file `/etc/postgresql/8.4/main/pg_hba.conf: There must be a line like this as the first non-comment line:\n\n\nlocal   all         postgres                          ident\n\n\n\nFor newer versions of PostgreSQL \nident\n actually might be \npeer\n. That's OK also.\n\n\nInside the \npsql\n shell you can give the \nDB user\n \npostgres\n a password:\n\n\nALTER USER postgres PASSWORD 'newPassword';",
+            "title": "Errors"
+        },
+        {
+            "location": "/PostgreSQL/errors/#fatal-password-authentication-failed-for-user-postgres",
+            "text": "If you have this error:  If I remember correctly the user  postgres  has no  DB  password set on Ubuntu by default. That means, that you can login to that account only by using the  postgres  OS user account.  Assuming, that you have  root  access on the box you can do:  sudo -u postgres psql  If any of those commands fail with an error  psql: FATAL:  password authentication failed for user \"postgres\"  then check the file `/etc/postgresql/8.4/main/pg_hba.conf: There must be a line like this as the first non-comment line:  local   all         postgres                          ident  For newer versions of PostgreSQL  ident  actually might be  peer . That's OK also.  Inside the  psql  shell you can give the  DB user   postgres  a password:  ALTER USER postgres PASSWORD 'newPassword';",
+            "title": "FATAL: password authentication failed for user \"postgres\""
+        },
+        {
+            "location": "/PostgreSQL/install/",
+            "text": "Before install\n\n\nsudo apt-get update\n\n\nInstall\n\n\nsudo apt-get install postgresql postgresql-contrib\n\n\nChange account to postgres\n\n\nsudo -i -u postgres\n\n\nCreate new role\n\n\ncreateuser --interactive\n\n## or with sudo\n\nsudo -u postgres createuser --interactive\n\n\n\n\nCreate new database\n\n\ncreatedb dbname\n\n## or with sudo\n\nsudo -u postgres createdb dbname\n\n\n\n\nCreate user\n\n\nsudo adduser username\n\n\nCommands\n\n\nChange postgres password\n\n\nALTER USER postgres PASSWORD 'password';",
+            "title": "Install"
+        },
+        {
+            "location": "/PostgreSQL/install/#before-install",
+            "text": "sudo apt-get update",
+            "title": "Before install"
+        },
+        {
+            "location": "/PostgreSQL/install/#install",
+            "text": "sudo apt-get install postgresql postgresql-contrib",
+            "title": "Install"
+        },
+        {
+            "location": "/PostgreSQL/install/#change-account-to-postgres",
+            "text": "sudo -i -u postgres",
+            "title": "Change account to postgres"
+        },
+        {
+            "location": "/PostgreSQL/install/#create-new-role",
+            "text": "createuser --interactive\n\n## or with sudo\n\nsudo -u postgres createuser --interactive",
+            "title": "Create new role"
+        },
+        {
+            "location": "/PostgreSQL/install/#create-new-database",
+            "text": "createdb dbname\n\n## or with sudo\n\nsudo -u postgres createdb dbname",
+            "title": "Create new database"
+        },
+        {
+            "location": "/PostgreSQL/install/#create-user",
+            "text": "sudo adduser username",
+            "title": "Create user"
+        },
+        {
+            "location": "/PostgreSQL/install/#commands",
+            "text": "",
+            "title": "Commands"
+        },
+        {
+            "location": "/PostgreSQL/install/#change-postgres-password",
+            "text": "ALTER USER postgres PASSWORD 'password';",
+            "title": "Change postgres password"
+        },
+        {
+            "location": "/Ubuntu/errors/",
+            "text": "Convert files to encoding\n\n\nIf you have problems withs files encoding\n\n\nInstall \nconvmv\n: \nsudo apt-get install convmv\n\n\nconvmv -r --notest -f windows-1251 -t UTF-8 *\n\n\n\n\nwindows-1251\n initial encoding\n\n\nUTF-8\n final encoding\n\n\n*\n all files",
+            "title": "Errors"
+        },
+        {
+            "location": "/Ubuntu/errors/#convert-files-to-encoding",
+            "text": "If you have problems withs files encoding  Install  convmv :  sudo apt-get install convmv  convmv -r --notest -f windows-1251 -t UTF-8 *   windows-1251  initial encoding  UTF-8  final encoding  *  all files",
+            "title": "Convert files to encoding"
+        },
+        {
+            "location": "/Ubuntu/grep/",
+            "text": "Find text in files\n\n\ngrep -rnw '/path/to/somewhere/' -e 'pattern'\n\n\n\n\n\n-r\n or \n-R\n is recursive,\n\n\n-n\n is line number, and\n\n\n-w\n stands for match the whole word.\n\n\n-l\n (lower-case L) can be added to just give the file name of matching files.\n\n\n\n\nAlong with these, \n--exclude\n, \n--include\n, \n--exclude-dir\n flags could be used for efficient searching:\n\n\n\n\n\n\nThis will only search through those files which have .c or .h extensions:\n\n\ngrep --include=\\*.{c,h} -rnw '/path/to/somewhere/' -e \"pattern\"\n\n\n\n\n\n\n\nThis will exclude searching all the files ending with .o extension:\n\n\ngrep --exclude=*.o -rnw '/path/to/somewhere/' -e \"pattern\"\n\n\n\n\n\n\n\nFor directories it's possible to exclude a particular directory(ies) through \n--exclude-dir\n parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:\n\n\ngrep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/somewhere/' -e \"pattern\"",
+            "title": "Grep"
+        },
+        {
+            "location": "/Ubuntu/grep/#find-text-in-files",
+            "text": "grep -rnw '/path/to/somewhere/' -e 'pattern'   -r  or  -R  is recursive,  -n  is line number, and  -w  stands for match the whole word.  -l  (lower-case L) can be added to just give the file name of matching files.   Along with these,  --exclude ,  --include ,  --exclude-dir  flags could be used for efficient searching:    This will only search through those files which have .c or .h extensions:  grep --include=\\*.{c,h} -rnw '/path/to/somewhere/' -e \"pattern\"    This will exclude searching all the files ending with .o extension:  grep --exclude=*.o -rnw '/path/to/somewhere/' -e \"pattern\"    For directories it's possible to exclude a particular directory(ies) through  --exclude-dir  parameter. For example, this will exclude the dirs dir1/, dir2/ and all of them matching *.dst/:  grep --exclude-dir={dir1,dir2,*.dst} -rnw '/path/to/somewhere/' -e \"pattern\"",
+            "title": "Find text in files"
+        },
+        {
+            "location": "/Ubuntu/ioncube/",
+            "text": "Installing IonCube Loader\n\n\nFirst, you will need to download the latest version of the IonCube Loader from their official website. Otherwise, you can download it using the following command:\n\n\nwget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz\n\n\n\nOnce the download is completed, extract the downloaded file using the following command:\n\n\ntar -xvzf ioncube_loaders_lin_x86-64.tar.gz\n\n\n\nBy default the files will be unzipped to a folder ioncube.\n\n\nNow, change the directory to ioncube folder and run ls command to see all the extension:\n\n\ncd ioncube\nls\n\n\n\nYou should see the various ioncube loader files corresponding to various php versions as below:\n\n\nioncube_loader_lin_4.1.so     ioncube_loader_lin_5.0_ts.so  ioncube_loader_lin_5.4.so     ioncube_loader_lin_7.0_ts.so  README.txt\nioncube_loader_lin_4.2.so     ioncube_loader_lin_5.1.so     ioncube_loader_lin_5.4_ts.so  ioncube_loader_lin_7.1.so     USER-GUIDE.pdf\nioncube_loader_lin_4.3.so     ioncube_loader_lin_5.1_ts.so  ioncube_loader_lin_5.5.so     ioncube_loader_lin_7.1_ts.so  USER-GUIDE.txt\nioncube_loader_lin_4.3_ts.so  ioncube_loader_lin_5.2.so     ioncube_loader_lin_5.5_ts.so  ioncube_loader_lin_7.2.so\nioncube_loader_lin_4.4.so     ioncube_loader_lin_5.2_ts.so  ioncube_loader_lin_5.6.so     ioncube_loader_lin_7.2_ts.so\nioncube_loader_lin_4.4_ts.so  ioncube_loader_lin_5.3.so     ioncube_loader_lin_5.6_ts.so  LICENSE.txt\nioncube_loader_lin_5.0.so     ioncube_loader_lin_5.3_ts.so  ioncube_loader_lin_7.0.so     loader-wizard.php\n\n\n\nNow, you will need to select the correct ioncube loader file as per the PHP version installed on your server. Run the following command to see the version of PHP installed on your server:\n\n\nphp -v\n\n\n\nOutput:\n\n\nPHP 7.0.22-0ubuntu0.16.04.1 (cli) ( NTS )\nCopyright (c) 1997-2017 The PHP Group\nZend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies\n    with Zend OPcache v7.0.22-0ubuntu0.16.04.1, Copyright (c) 1999-2017, by Zend Technologies\nIn the above output, you should see that the PHP version installed is PHP 7.0.22. So you will need to copy ioncube_loader_lin_7.0.so file from ioncube directory to the PHP extension directory.\n\n\n\nFirst, find the location of the PHP extension directory using the following command:\n\n\nphp -i | grep extension_dir\n\n\n\nYou should see the following output:\n\n\nextension_dir => /usr/lib/php/20151012 => /usr/lib/php/20151012\n\n\n\nNow, copy ioncube loader file to the PHP extension directory (/usr/lib/php/20151012) using the following command:\n\n\ncd ioncube\ncp ioncube_loader_lin_7.0.so /usr/lib/php/20151012/\n\n\n\nNext, you will need to edit php.ini file and add path of the ioncube extension. You can do this with the following command:\n\n\nsudo nano /etc/php/7.0/apache2/php.ini\n\n\n\nAdd the following line:\n\n\nzend_extension=/usr/lib/php/20151012/ioncube_loader_lin_7.0.so\n\n\n\nSave the file, then open other php.ini file:\n\n\nsudo nano /etc/php/7.0/cli/php.ini\n\n\n\nAdd the following line:\n\n\nzend_extension=/usr/lib/php/20151012/ioncube_loader_lin_7.0.so\n\n\n\nSave and close the file, then restart Apache service to apply the changes:\n\n\nsudo systemctl restart apache2\n\n\n\nTesting IonCube Loader\n\n\nNow, everything is configured properly, it's time to test whether Ioncube loader is installed or not. You can test it using the following command:\n\n\nphp -v\n\n\n\nIf everythig is fine, you should see the following output:\n\n\nPHP 7.0.22-0ubuntu0.16.04.1 (cli) ( NTS )\nCopyright (c) 1997-2017 The PHP Group\nZend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies\n    with the ionCube PHP Loader (enabled) + Intrusion Protection from ioncube24.com (unconfigured) v10.1.0, Copyright (c) 2002-2017, by ionCube Ltd.\n    with Zend OPcache v7.0.22-0ubuntu0.16.04.1, Copyright (c) 1999-2017, by Zend Technologies\n\n\n\nSource howtoforge",
+            "title": "Ioncube"
+        },
+        {
+            "location": "/Ubuntu/ioncube/#installing-ioncube-loader",
+            "text": "First, you will need to download the latest version of the IonCube Loader from their official website. Otherwise, you can download it using the following command:  wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz  Once the download is completed, extract the downloaded file using the following command:  tar -xvzf ioncube_loaders_lin_x86-64.tar.gz  By default the files will be unzipped to a folder ioncube.  Now, change the directory to ioncube folder and run ls command to see all the extension:  cd ioncube\nls  You should see the various ioncube loader files corresponding to various php versions as below:  ioncube_loader_lin_4.1.so     ioncube_loader_lin_5.0_ts.so  ioncube_loader_lin_5.4.so     ioncube_loader_lin_7.0_ts.so  README.txt\nioncube_loader_lin_4.2.so     ioncube_loader_lin_5.1.so     ioncube_loader_lin_5.4_ts.so  ioncube_loader_lin_7.1.so     USER-GUIDE.pdf\nioncube_loader_lin_4.3.so     ioncube_loader_lin_5.1_ts.so  ioncube_loader_lin_5.5.so     ioncube_loader_lin_7.1_ts.so  USER-GUIDE.txt\nioncube_loader_lin_4.3_ts.so  ioncube_loader_lin_5.2.so     ioncube_loader_lin_5.5_ts.so  ioncube_loader_lin_7.2.so\nioncube_loader_lin_4.4.so     ioncube_loader_lin_5.2_ts.so  ioncube_loader_lin_5.6.so     ioncube_loader_lin_7.2_ts.so\nioncube_loader_lin_4.4_ts.so  ioncube_loader_lin_5.3.so     ioncube_loader_lin_5.6_ts.so  LICENSE.txt\nioncube_loader_lin_5.0.so     ioncube_loader_lin_5.3_ts.so  ioncube_loader_lin_7.0.so     loader-wizard.php  Now, you will need to select the correct ioncube loader file as per the PHP version installed on your server. Run the following command to see the version of PHP installed on your server:  php -v  Output:  PHP 7.0.22-0ubuntu0.16.04.1 (cli) ( NTS )\nCopyright (c) 1997-2017 The PHP Group\nZend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies\n    with Zend OPcache v7.0.22-0ubuntu0.16.04.1, Copyright (c) 1999-2017, by Zend Technologies\nIn the above output, you should see that the PHP version installed is PHP 7.0.22. So you will need to copy ioncube_loader_lin_7.0.so file from ioncube directory to the PHP extension directory.  First, find the location of the PHP extension directory using the following command:  php -i | grep extension_dir  You should see the following output:  extension_dir => /usr/lib/php/20151012 => /usr/lib/php/20151012  Now, copy ioncube loader file to the PHP extension directory (/usr/lib/php/20151012) using the following command:  cd ioncube\ncp ioncube_loader_lin_7.0.so /usr/lib/php/20151012/  Next, you will need to edit php.ini file and add path of the ioncube extension. You can do this with the following command:  sudo nano /etc/php/7.0/apache2/php.ini  Add the following line:  zend_extension=/usr/lib/php/20151012/ioncube_loader_lin_7.0.so  Save the file, then open other php.ini file:  sudo nano /etc/php/7.0/cli/php.ini  Add the following line:  zend_extension=/usr/lib/php/20151012/ioncube_loader_lin_7.0.so  Save and close the file, then restart Apache service to apply the changes:  sudo systemctl restart apache2",
+            "title": "Installing IonCube Loader"
+        },
+        {
+            "location": "/Ubuntu/ioncube/#testing-ioncube-loader",
+            "text": "Now, everything is configured properly, it's time to test whether Ioncube loader is installed or not. You can test it using the following command:  php -v  If everythig is fine, you should see the following output:  PHP 7.0.22-0ubuntu0.16.04.1 (cli) ( NTS )\nCopyright (c) 1997-2017 The PHP Group\nZend Engine v3.0.0, Copyright (c) 1998-2017 Zend Technologies\n    with the ionCube PHP Loader (enabled) + Intrusion Protection from ioncube24.com (unconfigured) v10.1.0, Copyright (c) 2002-2017, by ionCube Ltd.\n    with Zend OPcache v7.0.22-0ubuntu0.16.04.1, Copyright (c) 1999-2017, by Zend Technologies  Source howtoforge",
+            "title": "Testing IonCube Loader"
+        },
+        {
+            "location": "/Ubuntu/other/",
+            "text": "The program add-apt-repository is currently not installed\n\n\nsudo apt-get install software-properties-common\n\n\nand/or\n\n\nsudo apt-get install python3-software-properties\n\n\nand/or\n\n\nsudo apt-get install python-software-properties\n\n\nSource Askubuntu\n\n\nConvert files\n\n\nconvmv -r --notest -f windows-1251 -t UTF-8 *\n\n\n\n\n\n\nwindows-1251\n - encode from\n\n\nUTF-8\n - encode to",
+            "title": "Other"
+        },
+        {
+            "location": "/Ubuntu/other/#the-program-add-apt-repository-is-currently-not-installed",
+            "text": "sudo apt-get install software-properties-common  and/or  sudo apt-get install python3-software-properties  and/or  sudo apt-get install python-software-properties  Source Askubuntu",
+            "title": "The program add-apt-repository is currently not installed"
+        },
+        {
+            "location": "/Ubuntu/other/#convert-files",
+            "text": "convmv -r --notest -f windows-1251 -t UTF-8 *   windows-1251  - encode from  UTF-8  - encode to",
+            "title": "Convert files"
+        },
+        {
+            "location": "/Ubuntu/user/",
+            "text": "Create User\n\n\nadduser newUser\n\n\n\nChange user group to sudo\n\n\nusermod -aG sudo newUser\n\n\n\nDelete user\n\n\ndeluser newUser\n\n\n\nDelete user with home directory\n\n\ndeluser --remove-home newUser\n\n\n\nChange user password\n\n\npasswd username\n\n\n\nShow The Groups a User Is In\n\n\ngroups username",
+            "title": "User"
+        },
+        {
+            "location": "/Ubuntu/user/#create-user",
+            "text": "adduser newUser",
+            "title": "Create User"
+        },
+        {
+            "location": "/Ubuntu/user/#change-user-group-to-sudo",
+            "text": "usermod -aG sudo newUser",
+            "title": "Change user group to sudo"
+        },
+        {
+            "location": "/Ubuntu/user/#delete-user",
+            "text": "deluser newUser",
+            "title": "Delete user"
+        },
+        {
+            "location": "/Ubuntu/user/#delete-user-with-home-directory",
+            "text": "deluser --remove-home newUser",
+            "title": "Delete user with home directory"
+        },
+        {
+            "location": "/Ubuntu/user/#change-user-password",
+            "text": "passwd username",
+            "title": "Change user password"
+        },
+        {
+            "location": "/Ubuntu/user/#show-the-groups-a-user-is-in",
+            "text": "groups username",
+            "title": "Show The Groups a User Is In"
+        },
+        {
+            "location": "/Yii2/errors/",
+            "text": "A circular dependency is detected for bundle...\n\n\nif u have this error after deployment yii2 application, just follow the command\n\n\ncomposer require fxp/composer-asset-plugin\n\n\nCould not find driver\n\n\nThis error can be displayed after \nyii migrate\n command. That means, u have no installed or not uncommented php-mysql extension\n\n\n\n\nFirst, try to uncomment \nextension=pdo_mysql\n extension line in \nphp.ini\n.\n\n\nNext, try to install (if u have not done this before):\n\n\n\n\nsudo apt-get install php7.1-mysql\n\n\nThe file or directory to be published does not exist vendor/bower/jquery/dist\n\n\nSolutions:\n\n\n\n\nadd into file \n/common/config/main.php\n\n\n\n\n'aliases' => [ \n             '@bower' => '@vendor/bower-asset', \n             '@npm'   => '@vendor/npm-asset', \n         ],\n\n\n\n\n\n\n\n\nor you can just rename folder \n/vendor/bower-asset\n to \nbower\n\n\n\n\n\n\nor you can create symlink from \n/vendor/bower-asset\n to \nbower\n folder",
+            "title": "Errors"
+        },
+        {
+            "location": "/Yii2/errors/#a-circular-dependency-is-detected-for-bundle",
+            "text": "if u have this error after deployment yii2 application, just follow the command  composer require fxp/composer-asset-plugin",
+            "title": "A circular dependency is detected for bundle..."
+        },
+        {
+            "location": "/Yii2/errors/#could-not-find-driver",
+            "text": "This error can be displayed after  yii migrate  command. That means, u have no installed or not uncommented php-mysql extension   First, try to uncomment  extension=pdo_mysql  extension line in  php.ini .  Next, try to install (if u have not done this before):   sudo apt-get install php7.1-mysql",
+            "title": "Could not find driver"
+        },
+        {
+            "location": "/Yii2/errors/#the-file-or-directory-to-be-published-does-not-exist-vendorbowerjquerydist",
+            "text": "Solutions:   add into file  /common/config/main.php   'aliases' => [ \n             '@bower' => '@vendor/bower-asset', \n             '@npm'   => '@vendor/npm-asset', \n         ],    or you can just rename folder  /vendor/bower-asset  to  bower    or you can create symlink from  /vendor/bower-asset  to  bower  folder",
+            "title": "The file or directory to be published does not exist vendor/bower/jquery/dist"
+        }
+    ]
+}
